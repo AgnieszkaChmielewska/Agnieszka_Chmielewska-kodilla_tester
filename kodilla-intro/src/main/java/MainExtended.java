@@ -15,7 +15,6 @@ public class MainExtended {
 
     private static String sayHello() {
         String text = "Hello from FirstClass!";
-
         return text;
     }
 }

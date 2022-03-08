@@ -1,6 +1,6 @@
 public class DebugExample<yourAge> {
     public static void main (String[] args) {
-        int firstNumber = 23;
+        int firstNumber = 222;
         int secondNumber = 22;
         int yourAge = 23;
 
@@ -22,17 +22,17 @@ public class DebugExample<yourAge> {
         } else {
             System.out.println("You are adult");
         }
-
     }
 
-
-private static void sumAndDisplay(int a, int b){
+    private static void sumAndDisplay(int a, int b){
         int result = a+b;
 
         System.out.println(result);
     }
+
     private static void subtractAndDisplay(int a, int b){
         int result = a-b;
+
         System.out.println(result);
     }
 
