@@ -24,10 +24,11 @@ public class DebugExample<yourAge> {
         }
     }
 
-    private static void sumAndDisplay(int a, int b){
+    private static int sumAndDisplay(int a, int b){
         int result = a+b;
 
         System.out.println(result);
+        return result;
     }
 
     private static void subtractAndDisplay(int a, int b){

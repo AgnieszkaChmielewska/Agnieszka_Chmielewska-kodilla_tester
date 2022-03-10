@@ -1,6 +1,6 @@
 public class SimpleArray {
     public static void main(String [] args) {
-        String[] books = new String[15];
+        String[] books = new String[5];
         books[0] = "Atlas chmur";
         books[1] = "Cień wiatru";
         books[2] = "Miasto kości";
@@ -15,7 +15,7 @@ public class SimpleArray {
         int numberOfElements = books.length;
         System.out.println("Moja tablica zawiera " + numberOfElements + " elementów.");
 
-        System.out.println(books[6]);
+        System.out.println(books[4]);
     }
 
 }
