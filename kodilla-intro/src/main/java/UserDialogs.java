@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class UserDialogs {
     public static String getUsername() {
-        Scanner scanner = new Scanner(System.in);                 // [1]
+        Scanner scanner = new Scanner(System.in);                 // [1] ?? System.in
         while (true) {                                            // [2]
             System.out.println("Enter your name:");                // [3]
             String name = scanner.nextLine().trim();               // [4]
