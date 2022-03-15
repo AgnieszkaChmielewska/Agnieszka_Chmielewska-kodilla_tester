@@ -1,6 +1,6 @@
 public class User {
-    String name;
-    int age;
+   private String name;
+   private int age;
 
     public User(String name, int age) {
         this.name = name;
@@ -9,6 +9,10 @@ public class User {
 
     public int getAge() {
         return age;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public static void main(String[] args) {
@@ -23,15 +27,22 @@ public class User {
         users[7] = new User("Ewa", 59);
 
         int sumOfUsersAge = 0;
-        for (int i = 0; i < users.length; i++) {
+        for (int i = 0; i < users.length; i++) {          // (int i = 0; i < users.length; i++)
             sumOfUsersAge = users[i].getAge() + sumOfUsersAge;
         }
 //        System.out.println(sumOfUsersAge);
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i].age < sumOfUsersAge / users.length) {
+            if (users[i].getAge() < sumOfUsersAge / users.length) {
                 System.out.println(users[i].name);
             }
         }
     }
 }
+//Utwórz klasę User, zawierającą imię oraz wiek użytkownika.
+// W metodzie main utwórz tablicę obiektów typu User i wypełnij ją dowolnymi obiektami.
+// W pętli for wyświetl imiona użytkowników, których wiek jest poniżej średniej wieku.
+
+//Potrzebny też będzie konstruktor i dwie metody (gettery), które zwrócą (return) wartość pól z imieniem i wiekiem.
+// Mając to wszystko, możemy wewnątrz klasy User utworzyć metodę main (public static void main(String[] args)) i
+// w niej zapisać kod spełniający omówiony w pierwszej wskazówce algorytm.

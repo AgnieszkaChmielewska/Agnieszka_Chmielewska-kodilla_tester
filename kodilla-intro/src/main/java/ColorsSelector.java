@@ -1,3 +1,5 @@
+import userapp.UserDialogs;
+
 public class ColorsSelector {
     public static void main(String[] args) {
         String selectedColor = UserDialogs.getUsersColorSelection();

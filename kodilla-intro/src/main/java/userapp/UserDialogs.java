@@ -1,3 +1,5 @@
+package userapp;
+
 import java.util.Scanner;
 
 public class UserDialogs {
@@ -32,6 +34,7 @@ public class UserDialogs {
             }
         }
     }
+
     public static int getValue() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number:");
@@ -52,7 +55,7 @@ public class UserDialogs {
                 case "C":
                     return String.valueOf(Colors.CYAN);
                 case "D":
-                    return String.valueOf(Colors.DEEPPINK);
+                    return String.valueOf(Colors.DEEP_PINK);
             }
         }
     }

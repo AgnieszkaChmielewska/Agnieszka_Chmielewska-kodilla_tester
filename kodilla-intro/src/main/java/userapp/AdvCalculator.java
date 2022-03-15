@@ -1,6 +1,8 @@
+package userapp;
+
 public class AdvCalculator {
     public static void main(String[] args){
-//        AdvCalculator calculator = new AdvCalculator();
+//        userapp.AdvCalculator calculator = new userapp.AdvCalculator();
 //        double result = calculator.calculate();
 //        System.out.println(result);
         String color = UserDialogs.getUsersColorSelection();

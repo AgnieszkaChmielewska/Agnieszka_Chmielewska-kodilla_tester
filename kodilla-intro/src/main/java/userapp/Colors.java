@@ -1,6 +1,8 @@
+package userapp;
+
 enum Colors {
     AZURE,
     BLACK,
     CYAN,
-    DEEPPINK
+    DEEP_PINK
 }

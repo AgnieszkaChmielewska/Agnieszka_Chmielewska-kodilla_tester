@@ -3,10 +3,10 @@ import java.util.Random;
 public class RandomNumbers {
 
     public static void main(String[] args) {
-    RandomNumbers r = new RandomNumbers();
+        RandomNumbers r = new RandomNumbers();
         r.getSumOfRandomNumbers(5000);
-        r.getTheSmallestRandomNumber(5000);
-        r.getTheBiggestRandomNumber(5000);
+        r.getTheSmallestRandomNumber();
+        r.getTheBiggestRandomNumber();
     }
 
     int max;
@@ -39,11 +39,11 @@ public class RandomNumbers {
         return result;
     }
 
-    public int getTheSmallestRandomNumber(int max) {
-    return theSmallestRandomNumber;
+    public int getTheSmallestRandomNumber() {
+        return theSmallestRandomNumber;
     }
 
-    public int getTheBiggestRandomNumber(int max) {
+    public int getTheBiggestRandomNumber() {
         return theBiggestRandomNumber;
     }
 }
