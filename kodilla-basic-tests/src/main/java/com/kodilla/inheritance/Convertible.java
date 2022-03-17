@@ -3,7 +3,7 @@ package com.kodilla.inheritance;
 public class Convertible extends Car {
     public void openRoof() {
         System.out.println("Opening roof...");
-    }
+           }
 
     public void closeRoof() {
         System.out.println("Closing roof...");
@@ -15,7 +15,8 @@ public class Convertible extends Car {
     }
 
     public Convertible() {
-        super(4, 4);
+        super(4, 2);
         System.out.println("Convertible constructor");
+
     }
 }
