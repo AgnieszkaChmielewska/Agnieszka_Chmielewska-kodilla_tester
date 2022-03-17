@@ -1,21 +1,16 @@
 package com.kodilla.abstracts.homework;
 
 public abstract class Shape {
-    private int numberOfsides;
-    private double area;
-    private double circuit;
+    private int numberOfSides;
 
-    public Shape(int numberOfsides) {
-        this.numberOfsides = numberOfsides;
+    public Shape(int numberOfSides) {
+        this.numberOfSides = numberOfSides;
     }
 
-    public double getCircuit() {
-        return circuit;
-    }
-
-    public double getArea() {
-        return area;
+    public int getNumberOfSides(){
+        return numberOfSides;
     }
 
     public abstract double calculateArea();
+    public abstract double calculatePerimeter();
 }
