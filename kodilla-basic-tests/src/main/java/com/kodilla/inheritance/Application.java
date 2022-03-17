@@ -8,7 +8,7 @@ public class Application {
         car.getSeats();
         car.displayNumberOfSeats();
 
-        Convertible convertible = new Convertible(4,2);
+        Convertible convertible = new Convertible();
         convertible.turnOnLights();
         convertible.openDoors();
         System.out.println(convertible.getSeats());
