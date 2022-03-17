@@ -29,6 +29,6 @@ public class OperatingSystem {
     }
 
     public void displayLicenseInfo(){
-        System.out.println("This License is for 1 user, Issue Year: "+issueYear);
+        System.out.println("This License is for 1 user, Issue Year: "+this.issueYear);
     }
 }

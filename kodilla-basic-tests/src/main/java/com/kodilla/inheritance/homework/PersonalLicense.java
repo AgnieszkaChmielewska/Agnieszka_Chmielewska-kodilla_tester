@@ -12,7 +12,7 @@ public class PersonalLicense extends OperatingSystem{
 
     @Override
     public void displayLicenseInfo() {
-        System.out.println("This License is for 2 users, Issue Year: " + getIssueYear());
+        System.out.println("This License is for 2 users, Issue Year: " + this.getIssueYear());
     }
 
 }
