@@ -28,6 +28,6 @@ public class CalculatorTestSuite {
         Calculator calculator = new Calculator();
         int a = 5;
         double squaredResult = calculator.squared(a);
-    assertEquals(25, squaredResult, 0.1);
+    assertEquals(25, squaredResult, 0.01);
     }
 }
