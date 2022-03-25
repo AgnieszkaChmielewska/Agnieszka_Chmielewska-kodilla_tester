@@ -35,12 +35,16 @@ public class Bank {
     }
 
     public int getCashMachinesWithdrawTransitionsNumber() {
-        int withdrawTransitionsNumber = cashMachine1.getWithdrawTransactionsNumber() + cashMachine2.getWithdrawTransactionsNumber() + cashMachine3.getWithdrawTransactionsNumber();
-        return withdrawTransitionsNumber;
+        return cashMachine1.getWithdrawTransactionsNumber() + cashMachine2.getWithdrawTransactionsNumber() + cashMachine3.getWithdrawTransactionsNumber();
     }
 
     public double getCashMachinesAverageDeposit() {
-        return cashMachine1.getAverageDeposit() + cashMachine2.getAverageDeposit() + cashMachine3.getAverageDeposit();
+        if (cashMachine1.getAverageDeposit() + cashMachine2.getAverageDeposit() + cashMachine3.getAverageDeposit() < 0)
+            return 0;
+        else {
+            double averageDeposit = cashMachine1.getAverageDeposit() + cashMachine2.getAverageDeposit() + cashMachine3.getAverageDeposit();
+            return averageDeposit;
+        }
     }
 
     public double getCashMachinesAverageWithdraw() {
@@ -52,27 +56,27 @@ public class Bank {
         }
     }
 
+
     public static void main(String[] args) {
-        CashMachine cashMachine = new CashMachine(0);
-        cashMachine.addTransition(210);
-        cashMachine.addTransition(50);
-        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
-        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
-        cashMachine.addTransition(-20);
-        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
-        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
-        cashMachine.addTransition(-180);
-        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
-        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
-        System.out.println(cashMachine.getSize());
-        System.out.println(cashMachine.getAverageWithdraw());
+//        CashMachine cashMachine = new CashMachine(0);
+//        cashMachine.addTransition(210);
+//        cashMachine.addTransition(50);
+//        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
+//        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
+//        cashMachine.addTransition(-20);
+//        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
+//        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
+//        cashMachine.addTransition(-180);
+//        System.out.println("W: " + cashMachine.getWithdrawTransactionsNumber());
+//        System.out.println("D: " + cashMachine.getDepositTransactionsNumber());
+//        System.out.println(cashMachine.getSize());
+//        System.out.println(cashMachine.getAverageWithdraw());
 
         Bank bank = new Bank(1);
         bank.addCashMachine1Transition(12);
         bank.addCashMachine2Transition(120);
         System.out.println("Total balance " + bank.getCashMachinesBalance());
-        System.out.println("Total transitions " + bank.cashMachine1.getSize());
         System.out.println("Total D: " + bank.getCashMachinesDepositTransitionsNumber());
-        System.out.println("AD: " + bank.getCashMachinesAverageWithdraw());
+        System.out.println("AD: " + bank.getCashMachinesWithdrawTransitionsNumber());
     }
 }

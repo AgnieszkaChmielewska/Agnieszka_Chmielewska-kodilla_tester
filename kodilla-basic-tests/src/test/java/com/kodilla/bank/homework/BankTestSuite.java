@@ -33,13 +33,11 @@ public class BankTestSuite {
 
         bank.addCashMachine3Transition(5000);
         bank.addCashMachine3Transition(-5000);
-        bank.addCashMachine3Transition(-5000);
-
 
         int depositTransitionsNumber = bank.getCashMachinesDepositTransitionsNumber();
         int balance = bank.getCashMachinesBalance();
-        assertEquals(3, depositTransitionsNumber);
-        assertEquals(45000, balance);
+        assertEquals(2, depositTransitionsNumber);
+        assertEquals(60000, balance);
     }
 
     @Test
@@ -82,15 +80,13 @@ public class BankTestSuite {
     public void shouldCountAverageDepositOnlyForPositiveAmounts() {
         Bank bank = new Bank(1);
         bank.addCashMachine1Transition(10000);
-        bank.addCashMachine1Transition(-10000);
-
-        bank.addCashMachine2Transition(5000);
+        bank.addCashMachine1Transition(2000);
 
         bank.addCashMachine3Transition(5000);
         bank.addCashMachine3Transition(-5000);
         bank.addCashMachine3Transition(-5000);
 
         double averageDeposit = bank.getCashMachinesAverageDeposit();
-        assertEquals(-35000, averageDeposit,0.0001);
+        assertEquals(11000, averageDeposit,0.0001);
     }
 }
