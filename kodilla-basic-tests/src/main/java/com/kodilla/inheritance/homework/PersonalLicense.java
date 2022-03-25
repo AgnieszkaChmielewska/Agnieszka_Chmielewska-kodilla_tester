@@ -8,11 +8,11 @@ public class PersonalLicense extends OperatingSystem{
     public PersonalLicense(){
         super(2022, 2);
         System.out.println("Personal License constructor");
-    };
+    }
 
     @Override
     public void displayLicenseInfo() {
-        System.out.println("This License is for 2 users, Issue Year: " + this.getIssueYear());
+        System.out.println("This License is for 2 users, Issue Year: " + getIssueYear());
     }
 
 }

@@ -4,14 +4,16 @@ public class Grades {
 
     public Grades(){
         this.grades=new int[10];
-        /*Zmienna size mówi nam, ile elementów aktualnie znajduje się w tablicy. Jej wartość powinna być modyfikowana, gdy zmieniamy wartości w tablicy.*/
+        /*Zmienna size mówi nam, ile elementów aktualnie znajduje się w tablicy.
+        Jej wartość powinna być modyfikowana, gdy zmieniamy wartości w tablicy.*/
         this.size = 0;
     }
-/*Tworząc obiekt typu Grades, wywołujemy konstruktor. W konstruktorze dodaliśmy przypisanie nowej wartości do zmiennej przechowującej oceny.??*/
+/*Tworząc obiekt typu Grades, wywołujemy konstruktor. W konstruktorze dodaliśmy
+przypisanie nowej wartości do zmiennej przechowującej oceny.??*/
 
     public void add (int value){
         if (this.size ==10){
-            return;
+            return;/*przerwij pętlę*/
         }
         this.grades[this.size]=value;
         this.size++;
