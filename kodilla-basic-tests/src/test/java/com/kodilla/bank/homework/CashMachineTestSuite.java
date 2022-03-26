@@ -42,7 +42,7 @@ public class CashMachineTestSuite {
         cashMachine.addTransition(-110);
 
         int transitions = cashMachine.getSize();
-        int withdrawNumbers = cashMachine.getWithdrawTransactionsNumber();
+        int withdrawNumbers = cashMachine.getWithdrawTransactionsQuantity();
         assertEquals(1, withdrawNumbers);
         assertEquals(2, transitions);
     }
@@ -53,7 +53,7 @@ public class CashMachineTestSuite {
         cashMachine.addTransition(-10);
 
         int transitions = cashMachine.getSize();
-        int withdrawNumbers = cashMachine.getWithdrawTransactionsNumber();
+        int withdrawNumbers = cashMachine.getWithdrawTransactionsQuantity();
         assertEquals(1, withdrawNumbers);
         assertEquals(2, transitions);
     }
@@ -86,38 +86,6 @@ public class CashMachineTestSuite {
         int balance = cashMachine.getBalance();
         assertEquals(50, balance);
         assertEquals(2, transitions.length);
-    }
-
-    @Test
-    public void shouldReturnAverageEqualsZeroWhenArrayIsEmpty() {
-        double averageWithdraw = cashMachine.getAverageWithdraw();
-        double averageDeposit = cashMachine.getAverageDeposit();
-        assertEquals(0, averageWithdraw);
-        assertEquals(0, averageDeposit);
-    }
-
-    @Test
-    public void shouldCountAverageWithdrawOnlyForNegativeAmounts() {
-        cashMachine.addTransition(100);
-        cashMachine.addTransition(-35);
-        cashMachine.addTransition(-60);
-
-        double averageWithdraw = cashMachine.getAverageWithdraw();
-        double averageDeposit = cashMachine.getAverageDeposit();
-        assertEquals(-47.5, averageWithdraw,0.0001);
-        assertEquals(100, averageDeposit,"Average withdraw ok when one withdraw transition");
-    }
-
-    @Test
-    public void shouldCountAverageDepositOnlyForPositiveAmounts() {
-        cashMachine.addTransition(100);
-        cashMachine.addTransition(35);
-        cashMachine.addTransition(-60);
-
-        double averageWithdraw = cashMachine.getAverageWithdraw();
-        double averageDeposit = cashMachine.getAverageDeposit();
-        assertEquals(-60, averageWithdraw,"Average deposit ok when one deposit transition");
-        assertEquals(67.5, averageDeposit, 0.001);
     }
 
 }

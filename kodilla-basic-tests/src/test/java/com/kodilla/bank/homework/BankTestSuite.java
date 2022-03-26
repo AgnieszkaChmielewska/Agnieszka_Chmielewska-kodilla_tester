@@ -6,87 +6,142 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTestSuite {
 
+    private Bank bank = new Bank(1);
+    private CashMachine cashMachineOne = new CashMachine(5000);
+    private CashMachine cashMachineTwo = new CashMachine(5000);
+    private CashMachine cashMachineThree = new CashMachine(5000);
+
 
     @Test
     public void shouldReturnAverageEqualsZeroIsArrayIsEmpty() {
-        Bank bank = new Bank(1);
-        assertEquals(0, bank.getCashMachinesAverageDeposit());
-        assertEquals(0, bank.getCashMachinesAverageWithdraw());
+        assertEquals(0, bank.getAverageDeposit());
+        assertEquals(0, bank.getAverageWithdraw());
     }
 
     @Test
-    public void shouldCalculateCorrectBalance() {
-        Bank bank = new Bank(1);
-        bank.addCashMachine1Transition(10000);
-        bank.addCashMachine2Transition(5000);
-        bank.addCashMachine3Transition(5000);
-
-        int balance = bank.getCashMachinesBalance();
-        assertEquals(80000, balance);
+    public void shouldReturnMachinesEqualsZeroIsArrayIsEmpty() {
+        assertEquals(0, bank.getSizes());
+        assertEquals(0, bank.getAllBalances());
     }
 
     @Test
-    public void shouldCalculateDepositTransitionsNumber() {
-        Bank bank = new Bank(1);
-        bank.addCashMachine1Transition(10000);
-        bank.addCashMachine1Transition(-10000);
+    public void shouldAddCashMachine() {
+        bank.addCashMachine(cashMachineOne);
 
-        bank.addCashMachine3Transition(5000);
-        bank.addCashMachine3Transition(-5000);
-
-        int depositTransitionsNumber = bank.getCashMachinesDepositTransitionsNumber();
-        int balance = bank.getCashMachinesBalance();
-        assertEquals(2, depositTransitionsNumber);
-        assertEquals(60000, balance);
+        assertEquals(1, bank.getSizes());
     }
 
     @Test
-    public void shouldCalculateWithdrawTransitionsNumber() {
-        Bank bank = new Bank(1);
-        bank.addCashMachine1Transition(10000);
-        bank.addCashMachine1Transition(-70001);
+    public void shouldCalculateCorrectAllBalances() {
 
-        bank.addCashMachine2Transition(5000);
-        bank.addCashMachine2Transition(5000);
+        bank.addCashMachine(cashMachineOne);
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
 
-        bank.addCashMachine3Transition(5000);
-        bank.addCashMachine3Transition(-5000);
-        bank.addCashMachine3Transition(-5000);
+        cashMachineOne.addTransition(0);
+        cashMachineOne.addTransition(100);
+        cashMachineTwo.addTransition(1000);
+        cashMachineThree.addTransition(-(cashMachineThree.getBalance() + 1));
 
-
-        int withdrawTransitionsNumber = bank.getCashMachinesWithdrawTransitionsNumber();
-        int balance = bank.getCashMachinesBalance();
-        assertEquals(2, withdrawTransitionsNumber);
-        assertEquals(75000, balance);
+        int balance = bank.getAllBalances();
+        assertEquals(16100, balance);
     }
 
     @Test
-    public void shouldCountAverageWithdrawOnlyForNegativeAmounts() {
-        Bank bank = new Bank(1);
-        bank.addCashMachine1Transition(10000);
-        bank.addCashMachine1Transition(-10000);
+    public void shouldCountDepositTransitionsQuantity() {
 
-        bank.addCashMachine2Transition(-20000);
+        bank.addCashMachine(cashMachineOne);
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
 
-        bank.addCashMachine3Transition(5000);
-        bank.addCashMachine3Transition(-5000);
-        bank.addCashMachine3Transition(-5000);
+        cashMachineOne.addTransition(-1000);
+        cashMachineOne.addTransition(1000);
+        cashMachineOne.addTransition(0);
+        cashMachineTwo.addTransition(1000);
+        cashMachineTwo.addTransition(-2);
+        cashMachineThree.addTransition(-(cashMachineThree.getBalance() + 1));
 
-        double averageWithdraw = bank.getCashMachinesAverageWithdraw();
-        assertEquals(-35000, averageWithdraw,0.0001);
+
+        int allDeposits = bank.getAllDeposits();
+        int balance = bank.getAllBalances();
+        assertEquals(2, allDeposits);
+        assertEquals(15998, balance);
+    }
+
+    @Test
+    public void shouldReturnZeroWhenZeroDepositTransitionsQuantity() {
+
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
+
+        cashMachineThree.addTransition(-(cashMachineThree.getBalance() + 1));
+
+        int allDeposits = bank.getAllDeposits();
+        assertEquals(0, allDeposits);
+    }
+
+    @Test
+    public void shouldCalculateWithdrawTransitionsQuantity() {
+
+        bank.addCashMachine(cashMachineOne);
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
+
+//        cashMachineTwo.addTransition(1000);
+//        cashMachineTwo.addTransition(-5999);
+
+        cashMachineThree.addTransition(-5000);
+        cashMachineThree.addTransition(-5000);
+
+        cashMachineOne.addTransition(0);
+        cashMachineOne.addTransition(-5000);
+        cashMachineOne.addTransition(-5000);
+
+        int withdrawTransitionsQuantity = bank.getAllWithdrawals();
+        assertEquals(2, withdrawTransitionsQuantity);
+    }
+
+    @Test
+    public void shouldCalculateAverageWithdrawOnlyForNegativeAmounts() {
+
+        bank.addCashMachine(cashMachineOne);
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
+
+        cashMachineTwo.addTransition(1000);
+        cashMachineTwo.addTransition(-6001);
+
+        cashMachineThree.addTransition(5000);
+
+        cashMachineOne.addTransition(5000);
+        cashMachineOne.addTransition(-5000);
+        cashMachineOne.addTransition(-5000);
+
+        double averageWithdraw = bank.getAverageWithdraw();
+        assertEquals(-5000, averageWithdraw, 0.1);
     }
 
     @Test
     public void shouldCountAverageDepositOnlyForPositiveAmounts() {
-        Bank bank = new Bank(1);
-        bank.addCashMachine1Transition(10000);
-        bank.addCashMachine1Transition(2000);
 
-        bank.addCashMachine3Transition(5000);
-        bank.addCashMachine3Transition(-5000);
-        bank.addCashMachine3Transition(-5000);
+        bank.addCashMachine(cashMachineOne);
+        bank.addCashMachine(cashMachineTwo);
+        bank.addCashMachine(cashMachineThree);
 
-        double averageDeposit = bank.getCashMachinesAverageDeposit();
-        assertEquals(11000, averageDeposit,0.0001);
+        cashMachineTwo.addTransition(1000);
+        cashMachineTwo.addTransition(0);
+        cashMachineThree.addTransition(5000);
+
+        double averageDeposit = bank.getAverageDeposit();
+        assertEquals(3000,averageDeposit,0.01);
     }
+
+    @Test
+    public void shouldReturnAverageEqualsZeroWhenArrayIsEmpty() {
+        double averageWithdraw = bank.getAverageWithdraw();
+        double averageDeposit = bank.getAverageDeposit();
+        assertEquals(0, averageWithdraw);
+        assertEquals(0, averageDeposit);
+    }
+
 }
