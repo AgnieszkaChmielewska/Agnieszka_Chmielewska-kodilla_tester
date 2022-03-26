@@ -12,6 +12,9 @@ public class Bank {
     public Bank(int regionId) {
         this.regionId = regionId;
         this.cashMachines = new CashMachine[0];
+//        cashMachines[0] = new CashMachine(10);
+//        cashMachines[1] = new CashMachine(10);
+//        cashMachines[2] = new CashMachine(10);
         this.size = 0;
     }
 
