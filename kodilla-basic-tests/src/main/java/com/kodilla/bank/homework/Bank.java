@@ -39,21 +39,18 @@ public class Bank {
 
     /*liczbę transakcji związaną z wpłatą pieniędzy,*/
     public int getAllWithdrawals() {
-        for (int i = 0; i < cashMachines.length; i++) {
-            if (cashMachines.length == 0) {
-                return 0;
-            }
-            allWithdrawals += cashMachines[i].getWithdrawTransactionsQuantity();
-
+       for(CashMachine cashMachine: cashMachines){
+//        for (int i = 0; i < cashMachines.length; i++) {
+            allWithdrawals += cashMachine.getWithdrawTransactionsQuantity();
         }
         return allWithdrawals;
     }
 
     /*liczbę transakcji związanych z wypłatą*/
     public int getAllDeposits() {
-        allDeposits = 0;
-        for (int i = 0; i < cashMachines.length; i++) {
-            allDeposits = allDeposits + cashMachines[i].getDepositTransactionsQuantity();
+       for(CashMachine cashMachine: cashMachines){
+//        for (int i = 0; i < cashMachines.length; i++) {
+            allDeposits = allDeposits + cashMachine.getDepositTransactionsQuantity();
         }
         return allDeposits;
     }
@@ -64,8 +61,10 @@ public class Bank {
             return 0;
         } else {
             depositSum = 0;
-            for (int i = 0; cashMachines.length > i; i++) {
-                depositSum += cashMachines[i].getDepositSum();
+            for(CashMachine cashMachine: cashMachines){
+//            for (int i = 0; cashMachines.length > i; i++) {
+//                depositSum += cashMachines[i].getDepositSum();
+                depositSum += cashMachine.getDepositSum();
             }
         }
         return depositSum / allDeposits;

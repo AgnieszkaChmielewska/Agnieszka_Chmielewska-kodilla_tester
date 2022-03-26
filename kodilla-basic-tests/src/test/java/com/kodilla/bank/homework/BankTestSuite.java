@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTestSuite {
 
-    private Bank bank = new Bank(1);
-    private CashMachine cashMachineOne = new CashMachine(5000);
-    private CashMachine cashMachineTwo = new CashMachine(5000);
-    private CashMachine cashMachineThree = new CashMachine(5000);
+    private final Bank bank = new Bank(1);
+    private final CashMachine cashMachineOne = new CashMachine(5000);
+    private final CashMachine cashMachineTwo = new CashMachine(5000);
+    private final CashMachine cashMachineThree = new CashMachine(5000);
 
 
     @Test
