@@ -31,6 +31,7 @@ public class InterfacesDemo {
 //            System.out.println(triangle.getPerimeter());
 //        }
 //
+
     /*zastosowanie interfejsu (jako argumentu metody) */
     private static void showShapeDetails(Shape shape) {
         System.out.println(shape.getArea());
