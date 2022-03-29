@@ -11,6 +11,7 @@ import java.util.List;
 
 public class CarsListApplication {
     public static void main(String[] args) {
+
         List<Car> cars = new ArrayList<>();
         Car volvo = new Volvo(200);
         cars.add(volvo);
