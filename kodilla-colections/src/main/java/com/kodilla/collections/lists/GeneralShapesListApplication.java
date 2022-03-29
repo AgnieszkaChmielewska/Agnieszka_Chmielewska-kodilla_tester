@@ -11,16 +11,21 @@ import java.util.List;
 public class GeneralShapesListApplication {
     public static void main(String[] args) {
         List<Shape> shapes = new LinkedList<>();
-      Shape square = new Square(10.0);
-//        shapes.add(new Square(10));
-        shapes.add(square);
+        Shape square = new Square(10.0);
+        shapes.add(new Square(10));
+       // shapes.add(square);
         shapes.add(new Circle(7));
         shapes.add(new Triangle(10, 4, 10.77));
+        shapes.add(new Triangle(10, 4, 10.77));
 
-        shapes.remove(1);
+    //    shapes.remove(1);
         shapes.remove(square);
+        Triangle triangle = new Triangle(10.0, 4.0, 10.77);   // [2]
+        shapes.remove(triangle);
+        shapes.remove(new Triangle(10.0, 4, 10.77));
 
-        System.out.println("Size of colection: "+shapes.size());
+        System.out.println("Size of collection: " + shapes.size());
+
         for (Shape shape : shapes) {
             System.out.println(shape + ", area: " + shape.getArea() +
                     ", perimeter: " + shape.getPerimeter());
