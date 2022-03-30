@@ -5,14 +5,28 @@ import java.util.List;
 
 public class School {
     private String schoolName;
-    private List<Integer> pupils = new ArrayList<>();
+    private List<Integer> pupilsQuantity = new ArrayList<>();
 
-    public School(String schoolName, int... pupils) {
+    public School(String schoolName, int...pupilsQuantity) {
         this.schoolName = schoolName;
-        for (Integer pupil : pupils) {
-            this.pupils.add(pupil);
+        for (Integer pupil : pupilsQuantity) {
+            this.pupilsQuantity.add(pupil);
         }
     }
 
+    public int getSum(){
+        int sum=0;
+        for (int classSize : pupilsQuantity) {
+sum += classSize;
+        }
+        return sum;
+    }
 
+    @Override
+    public String toString() {
+        return "School{" +
+                "schoolName='" + schoolName + '\'' +
+                ", pupilsQuantity=" + pupilsQuantity +
+                '}';
+    }
 }
