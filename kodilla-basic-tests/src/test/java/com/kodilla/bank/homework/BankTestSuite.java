@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTestSuite {
 
-    private final Bank bank = new Bank(1);
     private final CashMachine cashMachineOne = new CashMachine(5000);
     private final CashMachine cashMachineTwo = new CashMachine(5000);
     private final CashMachine cashMachineThree = new CashMachine(5000);
+    private final Bank bank = new Bank(1, cashMachineOne, cashMachineTwo, cashMachineThree);
 
 
     @Test
@@ -20,23 +20,24 @@ public class BankTestSuite {
 
     @Test
     public void shouldReturnMachinesEqualsZeroIsArrayIsEmpty() {
-        assertEquals(0, bank.getSizes());
-        assertEquals(0, bank.getAllBalances());
+        final Bank bank = new Bank(1, cashMachineOne, cashMachineTwo, cashMachineThree);
+
+        assertEquals(3, bank.getSizes());
+        assertEquals(15000, bank.getAllBalances());
     }
 
     @Test
     public void shouldAddCashMachine() {
+        final Bank bank = new Bank(1, cashMachineOne, cashMachineTwo, cashMachineThree);
         bank.addCashMachine(cashMachineOne);
 
-        assertEquals(1, bank.getSizes());
+        assertEquals(4, bank.getSizes());
     }
 
     @Test
     public void shouldCalculateCorrectAllBalances() {
 
-        bank.addCashMachine(cashMachineOne);
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+        final Bank bank = new Bank(1, cashMachineOne, cashMachineTwo, cashMachineThree);
 
         cashMachineOne.addTransition(0);
         cashMachineOne.addTransition(100);
@@ -50,9 +51,9 @@ public class BankTestSuite {
     @Test
     public void shouldCountDepositTransitionsQuantity() {
 
-        bank.addCashMachine(cashMachineOne);
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+//        bank.addCashMachine(cashMachineOne);
+//        bank.addCashMachine(cashMachineTwo);
+//        bank.addCashMachine(cashMachineThree);
 
         cashMachineOne.addTransition(-1000);
         cashMachineOne.addTransition(1000);
@@ -71,8 +72,8 @@ public class BankTestSuite {
     @Test
     public void shouldReturnZeroWhenZeroDepositTransitionsQuantity() {
 
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+//        bank.addCashMachine(cashMachineTwo);
+//        bank.addCashMachine(cashMachineThree);
 
         cashMachineThree.addTransition(-(cashMachineThree.getBalance() + 1));
 
@@ -83,9 +84,9 @@ public class BankTestSuite {
     @Test
     public void shouldCalculateWithdrawTransitionsQuantity() {
 
-        bank.addCashMachine(cashMachineOne);
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+//        bank.addCashMachine(cashMachineOne);
+//        bank.addCashMachine(cashMachineTwo);
+//        bank.addCashMachine(cashMachineThree);
 
 //        cashMachineTwo.addTransition(1000);
 //        cashMachineTwo.addTransition(-5999);
@@ -104,9 +105,9 @@ public class BankTestSuite {
     @Test
     public void shouldCalculateAverageWithdrawOnlyForNegativeAmounts() {
 
-        bank.addCashMachine(cashMachineOne);
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+//        bank.addCashMachine(cashMachineOne);
+//        bank.addCashMachine(cashMachineTwo);
+//        bank.addCashMachine(cashMachineThree);
 
         cashMachineTwo.addTransition(1000);
         cashMachineTwo.addTransition(-6001);
@@ -124,9 +125,9 @@ public class BankTestSuite {
     @Test
     public void shouldCountAverageDepositOnlyForPositiveAmounts() {
 
-        bank.addCashMachine(cashMachineOne);
-        bank.addCashMachine(cashMachineTwo);
-        bank.addCashMachine(cashMachineThree);
+//        bank.addCashMachine(cashMachineOne);
+//        bank.addCashMachine(cashMachineTwo);
+//        bank.addCashMachine(cashMachineThree);
 
         cashMachineTwo.addTransition(1000);
         cashMachineTwo.addTransition(0);

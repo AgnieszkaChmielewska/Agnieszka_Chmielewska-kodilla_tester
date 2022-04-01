@@ -9,13 +9,14 @@ public class Bank {
     private int allDeposits;
 
 
-    public Bank(int regionId) {
+    public Bank(int regionId, CashMachine... cas) {
         this.regionId = regionId;
-        this.cashMachines = new CashMachine[0];
+//        this.cashMachines = new CashMachine[0];
+        this.cashMachines = cas;
 //        cashMachines[0] = new CashMachine(10);
 //        cashMachines[1] = new CashMachine(10);
 //        cashMachines[2] = new CashMachine(10);
-        this.size = 0;
+        this.size = this.cashMachines.length;
     }
 
     public void addCashMachine(CashMachine cashMachine) {
@@ -42,7 +43,7 @@ public class Bank {
 
     /*liczbę transakcji związaną z wpłatą pieniędzy,*/
     public int getAllWithdrawals() {
-       for(CashMachine cashMachine: cashMachines){
+        for (CashMachine cashMachine : cashMachines) {
 //        for (int i = 0; i < cashMachines.length; i++) {
             allWithdrawals += cashMachine.getWithdrawTransactionsQuantity();
         }
@@ -51,7 +52,7 @@ public class Bank {
 
     /*liczbę transakcji związanych z wypłatą*/
     public int getAllDeposits() {
-       for(CashMachine cashMachine: cashMachines){
+        for (CashMachine cashMachine : cashMachines) {
 //        for (int i = 0; i < cashMachines.length; i++) {
             allDeposits = allDeposits + cashMachine.getDepositTransactionsQuantity();
         }
@@ -64,7 +65,7 @@ public class Bank {
             return 0;
         } else {
             depositSum = 0;
-            for(CashMachine cashMachine: cashMachines){
+            for (CashMachine cashMachine : cashMachines) {
 //            for (int i = 0; cashMachines.length > i; i++) {
 //                depositSum += cashMachines[i].getDepositSum();
                 depositSum += cashMachine.getDepositSum();
