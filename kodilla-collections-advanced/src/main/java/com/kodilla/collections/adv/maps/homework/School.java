@@ -7,17 +7,17 @@ public class School {
     private String schoolName;
     private List<Integer> pupilsQuantity = new ArrayList<>();
 
-    public School(String schoolName, int...pupilsQuantity) {
+    public School(String schoolName, int... pupilsQuantity) {
         this.schoolName = schoolName;
         for (Integer pupil : pupilsQuantity) {
             this.pupilsQuantity.add(pupil);
         }
     }
 
-    public int getSum(){
-        int sum=0;
+    public int getSum() {
+        int sum = 0;
         for (int classSize : pupilsQuantity) {
-sum += classSize;
+            sum += classSize;
         }
         return sum;
     }
