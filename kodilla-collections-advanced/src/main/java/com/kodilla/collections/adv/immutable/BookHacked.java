@@ -1,4 +1,4 @@
-package com.kodilla.collections.adv.maps.immutable;
+package com.kodilla.collections.adv.immutable;
 
 public class BookHacked extends Book {
     private String realTitle; /*Klasa BookHacked wprowadza swoje własne pole służące do przechowywania tytułu, które nie jest oznaczone final, w związku z czym może być dowolnie modyfikowane. */

@@ -1,4 +1,4 @@
-package com.kodilla.collections.adv.maps.immutable;
+package com.kodilla.collections.adv.immutable;
 
 public /*final*/ class Book {  /*po dodaniu w klasie słowa final dziedziczenie z klasy nie będzie możliwe*/
     protected final String author;
