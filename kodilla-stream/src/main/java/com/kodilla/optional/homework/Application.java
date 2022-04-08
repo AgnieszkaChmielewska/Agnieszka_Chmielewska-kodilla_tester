@@ -15,10 +15,9 @@ public class Application {
         students.add(new Student("Ala Wożniak",null));
 
         for (Student a:students) {
-            Optional<Student> optionalStudent = Optional.ofNullable(a);
             Optional<Teacher> optionalTeacher = Optional.ofNullable(a.getTeacher());
-            Teacher teacherName = optionalTeacher.orElse(new Teacher(null));
-           optionalStudent.ifPresent(u->System.out.println("uczeń: "+a.getName()+", nauczyciel: "+ teacherName));
+            Teacher teacherName = optionalTeacher.orElse(new Teacher("<undefined>"));
+           optionalTeacher.ifPresent(u->System.out.println("uczeń: "+a.getName()+", nauczyciel: "+ teacherName));
 
         }
     }
