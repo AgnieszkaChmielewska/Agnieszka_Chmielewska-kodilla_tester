@@ -15,7 +15,6 @@ public class ForumStats {
                 .getAsDouble();
         System.out.println(avgPostsUsersOver40);
 
-
         double avgPostsUsersUnder40  = UsersRepository.getUsersList()
 
                 .stream()
