@@ -11,19 +11,22 @@ public class Dictionary {
     Map<String, List<EnglishWord>> dictionary = new HashMap<>();
 
 
-    public void addWord(String polishWord, EnglishWord englishWord) {                                     /*Metoda ta pobiera z mapy listę angielskich słów, odpowiadających wskazanemu słowu polski
-                                                                                                           emu. getOrDefault zwraca podaną jako argument wartość domyślną, gdy mapa nie zawiera szukanego przez nas wpisu */
-        List<EnglishWord> englishWords = dictionary.getOrDefault(polishWord, new ArrayList<>());          /*Do tej listy (dotychczas istniejących w mapie słów angielskich lub nowej pustej listy) dodawany jest nasz wpis.*/
-        englishWords.add(englishWord);                                                                    /*wpis wstawiany jest do mapy*/
-        dictionary.put(polishWord, englishWords);
+    public void addWord(String polishWord, EnglishWord englishWord) {          /*Metoda ta pobiera z mapy listę angielskich słów,
+    odpowiadających wskazanemu słowu polski
+                                                                                 emu. getOrDefault zwraca podaną jako argument wartość domyślną,
+                                                                                 gdy mapa nie zawiera szukanego przez nas wpisu */
+        List<EnglishWord> englishWords = dictionary.getOrDefault(polishWord, new ArrayList<>()); /*szuka klucza -polskie słowo - jak nie ma to wtedy pusta lista*/
+        /*Do tej listy (dotychczas istniejących w mapie słów angielskich lub nowej pustej listy) dodawany jest nasz wpis.*/
+        englishWords.add(englishWord);
+        dictionary.put(polishWord, englishWords);         /*wpis wstawiany jest do mapy*/
 
-        //dictionary.put(polishWord, Collections.singletonList(englishWord));
+        //dictionary.put(polishWord, Collections.singletonList(englishWord)); /*lista z jednym elementem, dodawane słowo zastępywało by już istniejące*/
 
     }
 
     /*typem zwracanym przez obie metody findEnglishWords jest lista obiektów typu EnglishWord*/
     public List<EnglishWord> findEnglishWords(String polishWord) {
-        return dictionary.getOrDefault(polishWord, Collections.emptyList());
+        return dictionary.getOrDefault(polishWord, Collections.emptyList());     /*co wskazuje na to że to lista angielskich słów?*/
     }
 
     public List<EnglishWord> findEnglishWords(String polishWord, PartOfSpeech partOfSpeech) {

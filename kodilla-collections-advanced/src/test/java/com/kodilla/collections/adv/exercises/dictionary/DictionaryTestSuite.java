@@ -36,7 +36,7 @@ class DictionaryTestSuite {
         List<EnglishWord> expectedList = new ArrayList<>();
         expectedList.add((new EnglishWord(PartOfSpeech.NOUN,"play")));
         expectedList.add((new EnglishWord(PartOfSpeech.NOUN,"game")));
-        assertEquals(expectedList, result); /*dlaczego porównanie dwó różnych obiektów dajae ten sam wynik?*/
+        assertEquals(expectedList, result);      /*dlaczego porównanie dwó różnych obiektów dajae ten sam wynik, mają różne adresy ale mają tą samą zawartość, którą sparawdza moetoda equals?*/
         assertEquals(2, result.size());
 
     }

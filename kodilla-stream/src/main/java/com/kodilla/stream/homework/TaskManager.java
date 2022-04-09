@@ -6,10 +6,11 @@ import java.util.stream.Collectors;
 
 public class TaskManager {
     public static void main(String[] args) {
-        List<LocalDate> deadlinesDates = TaskRepository.getTasks()
+        List<Integer> deadlinesDates = TaskRepository.getTasks()
                 .stream()
                 .filter(u -> u.getDeadline().isAfter(LocalDate.now()))
                 .map(TaskManager::getDeadlinesDates)
+                .map(u -> u.getDayOfMonth())
                 .collect(Collectors.toList());
         System.out.println(deadlinesDates);
     }

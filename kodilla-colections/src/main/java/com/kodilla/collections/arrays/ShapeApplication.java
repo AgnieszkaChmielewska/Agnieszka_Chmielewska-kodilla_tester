@@ -22,7 +22,7 @@ public class ShapeApplication {
     private static Shape drawShape() {
         Random random = new Random();
         int drawnShapeKind = random.nextInt(3); // possible values: 0, 1, 2
-        double a = random.nextDouble() * 100 + 1;     // possible values: from  1.000 to 100.99999....
+        double a = random.nextDouble() * 100 + 1;     // possible values: from  1 to 100.99999....  ??????
         double b = random.nextDouble() * 100 + 1;
         double c = random.nextDouble() * 100 + 1;
 //Za pomocą metody next.Double (losuje od 0 do 1) wylosowaliśmy trzy liczby (a, b, c)
