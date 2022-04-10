@@ -1,17 +1,22 @@
 package com.kodilla.stream.exception.homework;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class WarehouseApp {
     public static void main(String[] args) {
+        Set<Order> orders = new HashSet<>();
+        Warehouse warehouse = new Warehouse(orders);
+        warehouse.addOrder(new Order("1"));
+        warehouse.addOrder(new Order("2"));
+        warehouse.addOrder(new Order("2"));
+        warehouse.addOrder(new Order("2"));
+        warehouse.addOrder(new Order("5"));
 
-        Warehouse.addOrder(new Order("Order 1"));
-        Warehouse.addOrder(new Order("Order 2"));
-        Warehouse.addOrder(new Order("Order 3"));
-        Warehouse.addOrder(new Order("Order 4"));
-        Warehouse.addOrder(new Order("Order 5"));
-
+        System.out.println(warehouse.getOrders().size());
         try {
-           Order order = Warehouse.getOrder("Order 5");
-            System.out.println(order.toString()+" exists ");
+            Order order = warehouse.getOrder("2");
+            System.out.println(order.toString() + " exists ");
         } catch (OrderDoesntExistException e) {
             System.out.println("Order doesn't exist");
         }

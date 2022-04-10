@@ -1,16 +1,24 @@
 package com.kodilla.stream.exception.homework;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class Warehouse {
-    private static Set<Order> orders = new HashSet<>();
+    private Set<Order> orders;
 
-    static void addOrder(Order order) {
-        orders.add(order);
+    public Warehouse(Set<Order> orders) {
+        this.orders = orders;
     }
 
-    public static Order getOrder(String number) throws OrderDoesntExistException {
+    public Set<Order> getOrders() {
+         return orders;
+    }
+
+    Set<Order> addOrder(Order order) {
+orders.add(order);
+return orders;
+    }
+
+    public Order getOrder(String number) throws OrderDoesntExistException {
         return orders
                 .stream()
                 .filter(n -> n.getNumber().equals(number))
