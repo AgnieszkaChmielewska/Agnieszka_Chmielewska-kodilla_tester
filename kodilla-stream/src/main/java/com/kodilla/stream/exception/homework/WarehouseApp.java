@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class WarehouseApp {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws OrderDoesntExistException {
         Set<Order> orders = new HashSet<>();
         Warehouse warehouse = new Warehouse(orders);
         warehouse.addOrder(new Order("1"));
@@ -20,6 +20,7 @@ public class WarehouseApp {
         } catch (OrderDoesntExistException e) {
             System.out.println("Order doesn't exist");
         }
+
     }
 
 }

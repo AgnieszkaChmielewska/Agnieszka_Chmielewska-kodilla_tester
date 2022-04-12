@@ -10,17 +10,38 @@ public class Warehouse {
     }
 
     public Set<Order> getOrders() {
-         return orders;
+        return orders;
     }
 
+//    public Order isOrderInUse(Order order) throws OrderDoesntExistException {
+//        if (getOrders().contains(order)) {
+//            return order;
+//        } else {
+//         throw new OrderDoesntExistException();
+//        }
+//    }
+
+//    public boolean doesOrderExist(Order order) {
+//
+//        try {
+//            if (getOrders().contains(order)) {
+//                return true;
+//            } else {
+//                throw new OrderDoesntExistException();
+//            }
+//        } catch (OrderDoesntExistException e) {
+//            System.out.println("Sorry");;
+//        }
+//        return false;
+//    }
+
     Set<Order> addOrder(Order order) {
-orders.add(order);
-return orders;
+        orders.add(order);
+        return orders;
     }
 
     public Order getOrder(String number) throws OrderDoesntExistException {
-        return orders
-                .stream()
+        return orders.stream()
                 .filter(n -> n.getNumber().equals(number))
                 .findFirst().orElseThrow(OrderDoesntExistException::new);
         //       return orders
