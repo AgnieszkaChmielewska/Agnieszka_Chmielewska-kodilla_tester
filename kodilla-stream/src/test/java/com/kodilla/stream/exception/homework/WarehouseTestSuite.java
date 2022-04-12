@@ -36,6 +36,7 @@ class WarehouseTestSuite {
         warehouse.addOrder(new Order("4"));
         warehouse.addOrder(new Order("5"));
         //when
+
         //then
         assertThrows(OrderDoesntExistException.class, () -> warehouse.getOrder("6"));
     }
