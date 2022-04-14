@@ -21,10 +21,9 @@ public class Warehouse {
 //        }
 //    }
 
-//    public boolean doesOrderExist(Order order) {
+    public boolean doesOrderExist(Order order) {
 //
 //        try {
-//            if (getOrders().contains(order)) {
 //                return true;
 //            } else {
 //                throw new OrderDoesntExistException();
@@ -32,8 +31,9 @@ public class Warehouse {
 //        } catch (OrderDoesntExistException e) {
 //            System.out.println("Sorry");;
 //        }
-//        return false;
-//    }
+       return  (getOrders().contains(order)) ;
+
+    }
 
     Set<Order> addOrder(Order order) {
         orders.add(order);

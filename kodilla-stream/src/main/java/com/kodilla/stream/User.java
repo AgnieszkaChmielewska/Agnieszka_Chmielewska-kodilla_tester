@@ -3,6 +3,7 @@ package com.kodilla.stream;
 import java.util.Objects;
 
 public class User {
+//    private Optional<String> username;
     private String username;
     private int age;
     private int numberOfPost;
@@ -42,5 +43,15 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(username, age, numberOfPost, group);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", age=" + age +
+                ", numberOfPost=" + numberOfPost +
+                ", group='" + group + '\'' +
+                '}';
     }
 }
