@@ -13,7 +13,7 @@ class GamblingMachineTestSuite {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/gamblingMachine.csv")
-    public void shouldPass(String numbers) throws InvalidNumbersException {
+    public void shouldPassWhenNumbersSetSizeSix(String numbers) throws InvalidNumbersException {
         //Given
         String[] numbersAsStrings = numbers.split(";");
         //Set<String> where = numbers.split(":");  .split tylko na tablicy Stringów może być wywołany?
@@ -26,7 +26,9 @@ class GamblingMachineTestSuite {
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()
                  .mapToInt(Integer::parseInt)
+//                .collect(Collectors.toSet());
                  .forEach(testedData::add);
+
 
         //When
         GamblingMachine gamblingMachine = new GamblingMachine();
@@ -39,7 +41,7 @@ class GamblingMachineTestSuite {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/gamblingMachineFalse.csv")
-    public void shouldNotPass(String numbers) throws InvalidNumbersException {
+    public void shouldThrowExceptionWhenWrongNumbersSets(String numbers) throws InvalidNumbersException {
         //Given
         String[] numbersAsStrings = numbers.split(";");
 
