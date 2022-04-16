@@ -1,6 +1,7 @@
 package com.kodilla.parametrized_tests;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +14,14 @@ public class StringManipulatorTestSuite {
     public void shouldReverseStringWithLowerCase(String input, String expected) {
         assertEquals(expected, stringManipulator.reverseWithLowerCase(input));
     }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/stringWithLowerCase.csv", numLinesToSkip = 1)
+    public void shouldReverseStringWithLowerCase_FromFileSource(String input, String expected) {
+        assertEquals(expected, stringManipulator.reverseWithLowerCase(input));
+    }
+
+
     @ParameterizedTest
     @CsvSource(value = {"test  ,4", "OtHEr,5", "E V e n t,5", "null,4", "A,1"})
 //    @CsvSource(value = {"test  ,4", "OtHEr,5", "E V e n t,5", "null,4", "A,1",",0"})
@@ -23,6 +32,12 @@ public class StringManipulatorTestSuite {
     @ParameterizedTest
     @CsvSource(value = {"te,st:1", "..OtHEr :0", "E,V,e,n.t:3", "null :0", "A:0"}, delimiter = ':')
     public void shouldCountNumberOfCommas(String input, int expected) {
+        assertEquals(expected, stringManipulator.countNumberOfCommas(input));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/stringWithCommas.csv", numLinesToSkip = 1, delimiter = ':')
+    public void shouldCountNumberOfCommasFromFile(String input, int expected) {
         assertEquals(expected, stringManipulator.countNumberOfCommas(input));
     }
 }

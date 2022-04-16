@@ -1,6 +1,6 @@
-input,expected
-test,tset
-OtHer,rehto
-EVent,tneve
-null,llun
-A,a
+input:expected
+test,:1
+OtHer   :0
+E,Ven,t,:3
+null:0
+A:0
