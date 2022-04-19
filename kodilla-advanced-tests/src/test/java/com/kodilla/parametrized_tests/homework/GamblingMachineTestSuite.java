@@ -6,8 +6,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class GamblingMachineTestSuite {
 
@@ -18,24 +17,25 @@ class GamblingMachineTestSuite {
         String[] numbersAsStrings = numbers.split(";");
         //Set<String> where = numbers.split(":");  .split tylko na tablicy Stringów może być wywołany?
 
-        Set<String> setCollectionOfStringNumbers =  new HashSet<>();
+        Set<String> setCollectionOfStringNumbers = new HashSet<>();
         for (String number : numbersAsStrings) {
             setCollectionOfStringNumbers.add(number);           // sprawdzam co się zapisało w collectionOfStringNumbers
             System.out.println(number);
         }
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()
-                 .mapToInt(Integer::parseInt)
+                .mapToInt(Integer::parseInt)
 //                .collect(Collectors.toSet());
-                 .forEach(testedData::add);
+                .forEach(testedData::add);
 
 
         //When
         GamblingMachine gamblingMachine = new GamblingMachine();
-        gamblingMachine.howManyWins(testedData);
+       int howManyWins = gamblingMachine.howManyWins(testedData);
+        System.out.println("howManyWins: "+howManyWins);
 
         //Then
-        assertEquals(6,testedData.size());
+        assertTrue(howManyWins>=0);
     }
 
 
@@ -45,21 +45,21 @@ class GamblingMachineTestSuite {
         //Given
         String[] numbersAsStrings = numbers.split(";");
 
-        Set<String> setCollectionOfStringNumbers =  new HashSet<>();
+        Set<String> setCollectionOfStringNumbers = new HashSet<>();
         for (String number : numbersAsStrings) {
             setCollectionOfStringNumbers.add(number);
             System.out.println(number);
         }
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()
-                 .mapToInt(Integer::parseInt)
-                 .forEach(testedData::add);
+                .mapToInt(Integer::parseInt)
+                .forEach(testedData::add);
 
         //When
         GamblingMachine gamblingMachine = new GamblingMachine();
 
         //Then
-        assertThrows(InvalidNumbersException.class,()->gamblingMachine.howManyWins(testedData));
+        assertThrows(InvalidNumbersException.class, () -> gamblingMachine.howManyWins(testedData));
     }
 
 }
