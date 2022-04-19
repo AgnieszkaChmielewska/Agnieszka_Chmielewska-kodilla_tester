@@ -36,6 +36,7 @@ class GamblingMachineTestSuite {
 
         //Then
         assertTrue(howManyWins>=0);
+        assertTrue(howManyWins<=6);
     }
 
 
