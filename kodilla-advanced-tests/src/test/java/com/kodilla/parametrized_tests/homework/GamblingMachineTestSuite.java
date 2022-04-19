@@ -20,7 +20,7 @@ class GamblingMachineTestSuite {
         Set<String> setCollectionOfStringNumbers = new HashSet<>();
         for (String number : numbersAsStrings) {
             setCollectionOfStringNumbers.add(number);           // sprawdzam co się zapisało w collectionOfStringNumbers
-            System.out.println(number);
+            //System.out.println(number);
         }
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()
@@ -32,7 +32,7 @@ class GamblingMachineTestSuite {
         //When
         GamblingMachine gamblingMachine = new GamblingMachine();
        int howManyWins = gamblingMachine.howManyWins(testedData);
-        System.out.println("howManyWins: "+howManyWins);
+       System.out.println("howManyWins: "+howManyWins);
 
         //Then
         assertTrue(howManyWins>=0);
@@ -49,7 +49,7 @@ class GamblingMachineTestSuite {
         Set<String> setCollectionOfStringNumbers = new HashSet<>();
         for (String number : numbersAsStrings) {
             setCollectionOfStringNumbers.add(number);
-            System.out.println(number);
+//            System.out.println(number);
         }
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()

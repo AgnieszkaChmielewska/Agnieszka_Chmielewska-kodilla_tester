@@ -8,7 +8,7 @@ public class GamblingMachine {
     public int howManyWins(Set<Integer> userNumbers) throws InvalidNumbersException {
         validateNumbers(userNumbers);
         Set<Integer> computerNumbers = generateComputerNumbers();
-        System.out.println("Computer numbers: "+computerNumbers);
+     System.out.println("Computer numbers: "+computerNumbers);
         int count = 0;
         for (Integer number : userNumbers) {
             if (computerNumbers.contains(number)) {
@@ -40,8 +40,8 @@ public class GamblingMachine {
     public static void main(String[] args) throws InvalidNumbersException {
 GamblingMachine gamblingMachine = new GamblingMachine();
 Set<Integer> numbers= gamblingMachine.generateComputerNumbers();
-        System.out.println("User numbers:"+numbers);
-        System.out.println(  " How many:"+ gamblingMachine.howManyWins(numbers));
+//        System.out.println("User numbers:"+numbers);
+//        System.out.println(  " How many:"+ gamblingMachine.howManyWins(numbers));
     }
 
 
