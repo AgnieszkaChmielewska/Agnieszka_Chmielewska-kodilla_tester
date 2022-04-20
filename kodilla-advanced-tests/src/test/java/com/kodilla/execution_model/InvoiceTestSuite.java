@@ -13,19 +13,20 @@ class InvoiceTestSuite {
     @Test
     public void shouldAddItem() {
         //Given
-        invoice.addItem(new Item("Pears", 6.5));
-        invoice.addItem(new Item("Apples", 3.5));
-        //When
+        invoice.addItem(pears);
+        invoice.addItem(apples);
         invoice.addItem(new Item("Bananas", 6.2));
+        //When
+        int numberOfItems = invoice.getSize();
         //Then
-        assertEquals(3, invoice.getSize());
+        assertEquals(3, numberOfItems);
     }
 
     @Test
     public void shouldAddedItemNameAndPrice() {
         //Given
         invoice.addItem(new Item("Bananas", 6.2));
-        invoice.addItem(new Item("Apples", 3.2));
+        invoice.addItem(apples);
         invoice.addItem(new Item("Lemons", 4.2));
         //Then
         Item testedItem = invoice.getItem(0);
