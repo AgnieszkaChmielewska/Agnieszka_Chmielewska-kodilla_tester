@@ -36,7 +36,7 @@ public class Person {
     }
 
     public static void main(String[] args) {
-        Person X = new Person(1.59, 47.5);
+        Person X = new Person(-1.59, 47.5);
         System.out.println(X.getBMI());
     }
 }

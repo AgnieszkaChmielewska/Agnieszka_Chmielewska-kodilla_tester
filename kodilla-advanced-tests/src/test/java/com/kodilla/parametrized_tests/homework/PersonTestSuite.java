@@ -10,6 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonTestSuite {
 
+
+    @ParameterizedTest
+    @MethodSource(value = "com.kodilla.parametrized_tests.homework.PersonSources#providesPersonsForTestingBMIDescription")
+    public void shouldReturnProperDescription(Person person, String expected) {
+
+        assertEquals(expected, person.getBMI() );
+    }
+
     @ParameterizedTest
     @MethodSource(value = "com.kodilla.parametrized_tests.homework.PersonSources#providesPersonsForTestingBMI")
     public void shouldCalculateBMI(Person person) {
