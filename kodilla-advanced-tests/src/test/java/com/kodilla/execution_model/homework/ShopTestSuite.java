@@ -1,15 +1,18 @@
 package com.kodilla.execution_model.homework;
 
 import org.junit.jupiter.api.*;
+import org.mockito.Mockito;
 
-import java.time.LocalDate;
+import java.time.*;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ShopTestSuite {
-    Shop shop = new Shop();
+
+    Clock clock = Mockito.mock(Clock.class);
+    Shop shop = new Shop(clock);
     Order order1 = new Order(100, LocalDate.of(2022, 04, 23), "User1");
     Order order2 = new Order(200, LocalDate.of(2022, 04, 21), "User3");
     Order order3 = new Order(300, LocalDate.of(2022, 04, 25), "User2");
@@ -17,13 +20,17 @@ class ShopTestSuite {
     @BeforeAll
     public static void displayIntroMessage() {
         System.out.println("Starting testing");
+
     }
 
     @BeforeEach
     public void initializeShop() {
+        Mockito.when(clock.instant()).thenReturn(LocalDate.of(2022,04,21).atStartOfDay().toInstant(ZoneOffset.UTC));
+        Mockito.when(clock.getZone()).thenReturn(ZoneId.of("UTC"));
         shop.addOrder(order1);
         shop.addOrder(order2);
         shop.addOrder(order3);
+
     }
 
     @AfterEach
@@ -47,10 +54,10 @@ class ShopTestSuite {
 
     @Test
     public void orderShouldBeAdded() {
-        Order order4 = new Order(500, LocalDate.of(2022,04,21),"User5");
+        Order order4 = new Order(500, LocalDate.of(2022, 04, 21), "User5");
         shop.addOrder(order4);
         assertEquals(500, order4.getPrice());
-        assertEquals(LocalDate.of(2022,04,21), order4.getOrderDate());
+        assertEquals(LocalDate.of(2022, 04, 21), order4.getOrderDate());
     }
 
     @Test

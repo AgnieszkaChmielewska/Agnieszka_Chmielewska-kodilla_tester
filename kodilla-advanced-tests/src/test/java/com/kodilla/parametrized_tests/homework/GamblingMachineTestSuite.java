@@ -6,7 +6,8 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GamblingMachineTestSuite {
 
@@ -51,10 +52,12 @@ class GamblingMachineTestSuite {
             setCollectionOfStringNumbers.add(number);
 //            System.out.println(number);
         }
+
         Set<Integer> testedData = new HashSet<>();
         setCollectionOfStringNumbers.stream()
                 .mapToInt(Integer::parseInt)
                 .forEach(testedData::add);
+         //       .collect(Collectors.toSet());
 
         //When
         GamblingMachine gamblingMachine = new GamblingMachine();

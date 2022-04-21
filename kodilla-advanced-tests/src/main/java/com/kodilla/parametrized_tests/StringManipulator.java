@@ -7,6 +7,9 @@ public class StringManipulator {
     }
 
     public int getStringLengthWithoutSpaces(String input) {
+        if (input==null){
+            return 0;
+        }
         String value = input.replaceAll(" ", "");
         return value.length();
     }

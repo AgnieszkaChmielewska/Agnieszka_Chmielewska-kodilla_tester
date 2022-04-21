@@ -1,5 +1,6 @@
 package com.kodilla.parametrized_tests.homework;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.NullSource;
@@ -27,7 +28,7 @@ class UserValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"!", "@", "#", "$s", "^1", "&D", "*.", "=_", "+-","`"})
+    @ValueSource(strings = {"!", "@", "#", "$s", "^1", "&D", "*.", "=_", "+-", "`"})
     public void shouldReturnFalseIfNotAllowedCharacterInUserName(String text) {
         System.out.println("|" + text + "|");
         boolean result = userValidator.validateUsername(text);
@@ -49,14 +50,14 @@ class UserValidatorTest {
         assertThrows(NullPointerException.class, () -> userValidator.validateUsername(text));
     }
 
-//    @Test
-//    public void shouldReturnFalseIfNull() {
-//        assertThrows(NullPointerException.class, () -> userValidator.validateUsername(null));
-//    }
+    @Test
+    public void shouldReturnFalseIfNull() {
+        assertThrows(NullPointerException.class, () -> userValidator.validateUsername(null));
+    }
 
 
     @ParameterizedTest
-    @ValueSource(strings = {"a.!@a.pl","!@a.pl", "a@a.1", "a@a.!","a@#.p","aga@_-.pl","aga@!.gmailss","aga@!.gmails","a@-gmail.waw.com."})
+    @ValueSource(strings = {"a.!@a.pl", "!@a.pl", "a@a.1", "a@a.!", "a@#.p", "aga@_-.pl", "aga@!.gmailss", "aga@!.gmails", "a@-gmail.waw.com."})
     public void shouldReturnFalseIfNotAllowedCharacterInEmail(String text) {
         System.out.println("|" + text + "|");
         boolean result = userValidator.validateEmail(text);
@@ -64,7 +65,7 @@ class UserValidatorTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"a@a.", "g_wp.pl","@wp.pl","a@.pl"})
+    @ValueSource(strings = {"a@a.", "g_wp.pl", "@wp.pl", "a@.pl"})
     public void shouldReturnFalseIfRequiredCharactersMissingInEmail(String text) {
         System.out.println("|" + text + "|");
         boolean result = userValidator.validateEmail(text);
@@ -78,17 +79,18 @@ class UserValidatorTest {
         boolean result = userValidator.validateEmail(text);
         assertFalse(result);
     }
-// przechodzi pusty email??
-//    @ParameterizedTest
-//    @EmptySource
-//    public void shouldReturnFalseIfEmailIsEmpty(String text) {
-//        System.out.println("|" + text + "|");
-//        boolean result = userValidator.validateEmail(text);
-//        assertFalse(result);
-//    }
+
+    // przechodzi pusty email?? NIE
+    @ParameterizedTest
+    @EmptySource
+    public void shouldReturnFalseIfEmailIsEmpty(String text) {
+        System.out.println("|" + text + "|");
+        boolean result = userValidator.validateEmail(text);
+        assertTrue(result);
+    }
 
     @ParameterizedTest
-    @ValueSource(strings = {"a@a.pl", "g.1@wp.pl","0@wp.pl","a@-gmail.waw.com"})
+    @ValueSource(strings = {"a@a.pl", "g.1@wp.pl", "0@wp.pl", "a@-gmail.waw.com"})
     public void shouldReturnTrueIfRequiredCharactersInEmail(String text) {
         System.out.println("|" + text + "|");
         boolean result = userValidator.validateEmail(text);
