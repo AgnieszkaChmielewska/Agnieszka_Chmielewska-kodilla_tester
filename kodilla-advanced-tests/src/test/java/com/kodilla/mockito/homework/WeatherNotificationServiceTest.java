@@ -10,14 +10,17 @@ class WeatherNotificationServiceTest {
     WeatherNotification weatherNotification = Mockito.mock(WeatherNotification.class);
     ServiceNotification serviceNotification = Mockito.mock(ServiceNotification.class);
     Subscriber subscriber = Mockito.mock((Subscriber.class));
+    Subscriber subscriber1 = Mockito.mock((Subscriber.class));
     Localization localization = Mockito.mock(Localization.class);
     Localization localization1 = Mockito.mock(Localization.class);
 
     @Test
     void ifSubscriberShouldReceiveServiceNotification() {
         weatherNotificationService.addSubscriber(subscriber,localization);
+        weatherNotificationService.addSubscriber(subscriber1,localization);
         weatherNotificationService.sendServiceNotification(serviceNotification);
         Mockito.verify(subscriber,Mockito.times(1)).receiveNotification(serviceNotification);
+        Mockito.verify(subscriber1,Mockito.times(1)).receiveNotification(serviceNotification);
     }
 
     @Test
@@ -35,8 +38,10 @@ class WeatherNotificationServiceTest {
     @Test
     void ifSubscriberShouldReceiveWeatherNotificationForAddedLocalisation() {
         weatherNotificationService.addSubscriber(subscriber,localization);
+        weatherNotificationService.addSubscriber(subscriber1,localization1);
         weatherNotificationService.sendWeatherAlert(weatherNotification, localization);
         Mockito.verify(subscriber,Mockito.times(1)).receiveWeatherNotification(weatherNotification);
+        Mockito.verify(subscriber1,Mockito.never()).receiveWeatherNotification(weatherNotification);
     }
 
     @Test
