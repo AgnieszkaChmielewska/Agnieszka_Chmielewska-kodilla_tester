@@ -12,12 +12,9 @@ public class Dictionary {
 
 
     public void addWord(String polishWord, EnglishWord englishWord) {          /*Metoda ta pobiera z mapy listę angielskich słów,
-    odpowiadających wskazanemu słowu polski
-                                                                                 emu. getOrDefault zwraca podaną jako argument wartość domyślną,
-                                                                                 gdy mapa nie zawiera szukanego przez nas wpisu */
+    odpowiadających wskazanemu słowu polskiemu. getOrDefault zwraca podaną jako argument wartość domyślną,                                                                                 gdy mapa nie zawiera szukanego przez nas wpisu */
         List<EnglishWord> englishWords = dictionary.getOrDefault(polishWord, new ArrayList<>()); /*szuka klucza -polskie słowo - jak nie ma to wtedy pusta lista*/
-        /*Do tej listy (dotychczas istniejących w mapie słów angielskich lub nowej pustej listy) dodawany jest nasz wpis.*/
-        englishWords.add(englishWord);
+        englishWords.add(englishWord);                                                  /*Do tej listy (dotychczas istniejących w mapie słów angielskich lub nowej pustej listy) dodawany jest nasz wpis.*/
         dictionary.put(polishWord, englishWords);         /*wpis wstawiany jest do mapy*/
 
         //dictionary.put(polishWord, Collections.singletonList(englishWord)); /*lista z jednym elementem, dodawane słowo zastępywało by już istniejące*/

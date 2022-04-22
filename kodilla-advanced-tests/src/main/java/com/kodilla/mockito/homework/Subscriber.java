@@ -1,8 +1,7 @@
 package com.kodilla.mockito.homework;
 
-import com.kodilla.mockito.Notification;
 public interface Subscriber {
 
-    void receiveNotification (Notification notification);
+    void receiveNotification (ServiceNotification serviceNotification);
     void receiveWeatherNotification (WeatherNotification weatherNotification);
 }
