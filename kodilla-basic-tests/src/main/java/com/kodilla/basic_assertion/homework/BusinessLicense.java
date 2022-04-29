@@ -1,4 +1,4 @@
-package com.kodilla.inheritance.homework;
+package com.kodilla.basic_assertion.homework;
 
 public class BusinessLicense extends OperatingSystem {
     public void exportDocument() {

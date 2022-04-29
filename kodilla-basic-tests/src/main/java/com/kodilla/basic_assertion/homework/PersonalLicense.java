@@ -1,4 +1,4 @@
-package com.kodilla.inheritance.homework;
+package com.kodilla.basic_assertion.homework;
 
 public class PersonalLicense extends OperatingSystem{
     public void openDocument(){
