@@ -8,8 +8,8 @@ public class UsersManager {
        List<String> usernames =  UsersRepository.getUsersList()
                 .stream()                       /*uruchamiamy strumień wynikiem działania tej linii jest Stream, przez który przepływają obiekty typu User*/
                 .filter(u -> u.getGroup().equals("Chemists"))
-//                .map(u->u.getUsername()) /*operacja transformująca / metoda map klasy Stream pozwala modyfikować obiekty przepływające*/
-                .map(UsersManager::getUserName)
+               .map(u->u.getUsername()) /*operacja transformująca / metoda map klasy Stream pozwala modyfikować obiekty przepływające*/
+ //               .map(UsersManager::getUserName)
 //              .forEach(un -> System.out.println(un)); /*wyrażenie terminalne (kolektor).*/
                 .collect(Collectors.toList());                        // [2]
         System.out.println(usernames);

@@ -23,7 +23,25 @@ public class WeatherNotificationService {
         }
     }
 
+    public void sendServiceNotificationS (ServiceNotification serviceNotification) {
+        subscribers.entrySet()
+                .stream()
+                .forEach(clientSetEntry -> clientSetEntry.getKey().receiveNotification(serviceNotification));
+    }
+
+
     public void sendWeatherAlert(WeatherNotification weatherNotification, Localization localization) {
+        for (Map.Entry<Subscriber, Set<Localization>> subscriber : this.subscribers.entrySet()) {
+            if (subscriber.getValue().contains(localization)) {
+                subscriber.getKey().receiveWeatherNotification(weatherNotification);
+            }
+        }
+    }
+    public void sendWeatherAlertS(WeatherNotification weatherNotification, Localization localization) {
+        subscribers.entrySet().stream()
+                .filter(u -> u.getValue().contains(localization))
+                .forEach(u -> u.getKey().receiveWeatherNotification(weatherNotification));
+
         for (Map.Entry<Subscriber, Set<Localization>> subscriber : this.subscribers.entrySet()) {
             if (subscriber.getValue().contains(localization)) {
                 subscriber.getKey().receiveWeatherNotification(weatherNotification);

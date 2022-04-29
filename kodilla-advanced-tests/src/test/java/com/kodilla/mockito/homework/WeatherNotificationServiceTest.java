@@ -30,6 +30,12 @@ class WeatherNotificationServiceTest {
     }
 
     @Test
+    void ifNotSubscriberShouldNotReceiveServiceNotificationS() {
+        weatherNotificationService.sendServiceNotificationS(serviceNotification);
+        Mockito.verify(subscriber,Mockito.never()).receiveNotification(serviceNotification);
+    }
+
+    @Test
     void ifNotSubscriberShouldNotReceiveWeatherNotification() {
         weatherNotificationService.sendWeatherAlert(weatherNotification, localization);
         Mockito.verify(subscriber,Mockito.never()).receiveWeatherNotification(weatherNotification);
