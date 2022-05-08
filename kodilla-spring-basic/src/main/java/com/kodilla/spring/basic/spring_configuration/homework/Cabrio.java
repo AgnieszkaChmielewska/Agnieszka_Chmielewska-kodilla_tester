@@ -6,6 +6,7 @@ public class Cabrio implements Car{
 
     @Override
     public boolean hasHeadlightsTurnedOn() {
+
         int hour = LocalDateTime.now().getHour();
         System.out.println(hour);
         if (hour < 6 && hour > 20) {

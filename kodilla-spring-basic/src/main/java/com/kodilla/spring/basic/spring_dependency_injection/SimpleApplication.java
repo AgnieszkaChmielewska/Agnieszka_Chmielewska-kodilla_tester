@@ -1,15 +1,15 @@
 package com.kodilla.spring.basic.spring_dependency_injection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 @Component
 public class SimpleApplication {
 
-    @Resource(name = "skypeMessageService")
+  //  @Resource(name = "skypeMessageService")
     @Autowired
+    @Qualifier(value = "textMessageService")
     // private SkypeMessageService messageService;
     private MessageService messageService;
 
