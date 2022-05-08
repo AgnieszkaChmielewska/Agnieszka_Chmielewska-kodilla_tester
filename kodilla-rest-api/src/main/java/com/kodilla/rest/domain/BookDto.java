@@ -7,7 +7,6 @@ public class BookDto {
     private String author;
 
     public BookDto(){
-
     }
 
     public BookDto(String title, String author) {

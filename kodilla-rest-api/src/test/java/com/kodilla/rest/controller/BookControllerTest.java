@@ -21,7 +21,7 @@ class BookControllerTest {
         booksList.add(new BookDto("Title 1", "Author 1"));
         booksList.add(new BookDto("Title 2", "Author 2"));
         Mockito.when(bookServiceMock.getBooks()).thenReturn(booksList);
-
+        System.out.println(booksList);
         //when
         List<BookDto> result = bookController.getBooks();
 
