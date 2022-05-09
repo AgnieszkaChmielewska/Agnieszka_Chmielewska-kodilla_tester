@@ -28,9 +28,6 @@ class BookController {
 
     @DeleteMapping
     public void removeBook(@RequestBody BookDto bookDto) {
-        List<BookDto> books = bookService.getBooks();
-        if (books.contains(bookDto)) {
-            removeBook(bookDto);
+           bookService.removeBook(bookDto);
         }
     }
-}
