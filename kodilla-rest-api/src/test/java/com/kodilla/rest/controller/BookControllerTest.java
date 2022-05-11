@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BookControllerTest {
 
 
-
     @Test
     void shouldFetchBooks() {
         //given
@@ -36,13 +35,21 @@ class BookControllerTest {
         BookService bookServiceMock = Mockito.mock(BookService.class);
         BookController bookController = new BookController(bookServiceMock);
         List<BookDto> booksList = new ArrayList<>();
+        Mockito.when(bookServiceMock.getBooks()).thenReturn(booksList);
+        BookDto book = new BookDto("Title 3", "Author 3");
+
+        Mockito.doAnswer(u -> {
+            final BookDto argument = u.getArgument(0);
+            booksList.add(argument);
+            return null;
+        }).when(bookServiceMock).addBook(Mockito.any(BookDto.class));
+
         booksList.add(new BookDto("Title 1", "Author 1"));
         booksList.add(new BookDto("Title 2", "Author 2"));
-        Mockito.when(bookServiceMock.getBooks()).thenReturn(booksList);
         System.out.println(booksList);
         //when
-        BookDto newBook = bookController.addBook(new BookDto("Title 3", "Author 3"));
-        booksList.add(newBook);
+        bookController.addBook(book);
+
         //then
         assertThat(booksList).hasSize(3);
     }

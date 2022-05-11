@@ -4,6 +4,7 @@ import com.kodilla.rest.domain.BookDto;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class BookService {
@@ -15,6 +16,7 @@ public class BookService {
     }
 
     public void addBook(BookDto bookDto) {
+   bookDto.setId(UUID.randomUUID());
         books.add(bookDto);
     }
 

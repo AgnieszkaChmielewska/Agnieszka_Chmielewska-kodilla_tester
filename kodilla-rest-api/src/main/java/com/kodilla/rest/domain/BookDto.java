@@ -1,17 +1,33 @@
 package com.kodilla.rest.domain;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class BookDto {
     private String title;
     private String author;
+    private UUID id;
 
     public BookDto(){
+    }
+
+    public BookDto(String title, String author, UUID id) {
+        this.title = title;
+        this.author = author;
+        this.id = id;
     }
 
     public BookDto(String title, String author) {
         this.title = title;
         this.author = author;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getTitle() { return title; }
