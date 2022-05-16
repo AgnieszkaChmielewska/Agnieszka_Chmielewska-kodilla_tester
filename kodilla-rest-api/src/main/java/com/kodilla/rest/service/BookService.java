@@ -19,7 +19,6 @@ public class BookService {
    bookDto.setId(UUID.randomUUID());
         books.add(bookDto);
     }
-
     public void removeBook(BookDto bookDto) {
         books.remove(bookDto);
     }
