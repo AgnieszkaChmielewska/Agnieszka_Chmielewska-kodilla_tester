@@ -34,8 +34,8 @@ public class Grades {
             return 0;
         }
         double sum = 0;
-        for (int i = 0; i < this.values.length; i++) {
-            sum = sum + this.values[i];
+        for (int value : this.values) {
+            sum = sum + value;
             /*the same: sum += this.values[i]*/
         }
         return sum / this.values.length;
