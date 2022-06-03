@@ -1,18 +1,25 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.GoogleSearch;
+
+import static com.codeborne.selenide.Selenide.open;
+
 
 public class TestGoogle {
     WebDriver driver;
 
     @Before
     public void testSetup() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.navigate().to("http://wwww.google.com");
+       WebDriverManager.chromedriver().setup();                   /*użycie biblioteki pozwala automatycznie pobierać sterowniki z internetu*/
+       open("http://wwww.google.com");
+
+//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.navigate().to("http://wwww.google.com");
+
     }
 
     @After
