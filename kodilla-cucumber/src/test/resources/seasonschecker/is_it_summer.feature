@@ -1,4 +1,5 @@
-Feature: Is it Summer? Everybody likes Summer
+Feature: Is it Summer?
+  Everybody likes Summer
 
   Scenario Outline: Today is or isn't Summer
     Given today is <day>
