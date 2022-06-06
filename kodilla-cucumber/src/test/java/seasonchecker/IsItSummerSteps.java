@@ -31,8 +31,6 @@ public class IsItSummerSteps implements En {
           //  throw new io.cucumber.java8.PendingException();
         });
        Then("I should be told {string}", (String string) -> {
-            // Write code here that turns the phrase above into concrete actions
-          // throw new io.cucumber.java8.PendingException();
             Assert.assertEquals(string, this.answer);
         });
 

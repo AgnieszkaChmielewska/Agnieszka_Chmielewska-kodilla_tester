@@ -1,6 +1,5 @@
 package pages;
 
-import com.sun.tools.javac.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class GoogleSearch extends AbstractPage{
 
     @FindBy(css = "input[title='Szukaj']")
@@ -16,6 +17,7 @@ public class GoogleSearch extends AbstractPage{
 
     @FindBy(css = "input[value='Szukaj w Google']")
     static List<WebElement> searchButton;
+
     private static GoogleResults googleResults;
 
     public GoogleSearch(WebDriver driver){
