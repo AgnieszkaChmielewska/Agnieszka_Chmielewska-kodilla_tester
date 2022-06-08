@@ -34,3 +34,13 @@ Feature: Cash Withdrawal
     When I request zero $0
     Then I should see message that  "The minimum withdrawal amount is $ 1"
     And In may wallet should be $200
+
+  Scenario: Do not change wallet balance when zero deposited
+    Given I have deposited $0 in my wallet
+    When I request $1
+    Then I should see message "Not enough money in wallet"
+
+  Scenario: Do not change wallet balance when negative amount deposited
+    Given I have deposited $-1 in my wallet
+    When I request $1
+    Then I should see message "Not enough money in wallet"

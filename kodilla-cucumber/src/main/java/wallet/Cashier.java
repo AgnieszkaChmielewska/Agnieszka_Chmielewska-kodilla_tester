@@ -1,10 +1,7 @@
 package wallet;
 
 public class Cashier {
-    private CashSlot cashSlot;
-    final private String unsuccessfulMessage = "Not enough money in wallet";
-    final private String incorrectAmountMessage = "Incorrect value. Please enter a valid amount";
-    final private String minAmountMessage = "The minimum withdrawal amount is $ 1";
+    final private CashSlot cashSlot;
 
     public CashSlot getCashSlot() {
         return cashSlot;
@@ -19,7 +16,7 @@ public class Cashier {
             getUnsuccessfulMessage();
         } else if (amount < 0) {
             getIncorrectAmountMessage();
-        } else if (amount == 0 && amount<1) {
+        } else if (amount == 0) {
             getMinAmountMessage();
         } else {
             cashSlot.dispense(amount);
@@ -28,18 +25,17 @@ public class Cashier {
     }
 
     public void withdraw(Wallet wallet, double amountDouble) {
-            getMinAmountMessage();
     }
 
     public String getUnsuccessfulMessage() {
-        return unsuccessfulMessage;
+        return "Not enough money in wallet";
     }
 
     public String getIncorrectAmountMessage() {
-        return incorrectAmountMessage;
+        return "Incorrect value. Please enter a valid amount";
     }
 
     public String getMinAmountMessage() {
-        return minAmountMessage;
+        return "The minimum withdrawal amount is $ 1";
     }
 }

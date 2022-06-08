@@ -51,7 +51,6 @@ public class WalletSteps implements En {
         });
 
         Then("The message should be displayed {string}", (String string) -> {
-            // Write code here that turns the phrase above into concrete actions
             Assert.assertEquals(string, cashier.getIncorrectAmountMessage());
         });
 
@@ -66,6 +65,24 @@ public class WalletSteps implements En {
         Then("I should see message that  {string}", (String string) -> {
             Assert.assertEquals(string, cashier.getMinAmountMessage());
 
+        });
+
+        Given("I have deposited $0 in my wallet", () -> {
+            wallet.deposit(0);
+            Assert.assertEquals("Incorrect wallet balance", 0, wallet.getBalance());
+        });
+
+        When("I request $1", () -> {
+            cashier.withdraw(wallet, 1);
+        });
+
+        Then("In may wallet should be $0", () -> {
+            Assert.assertEquals(0, wallet.getBalance());
+        });
+
+        Given("I have deposited $-{int} in my wallet", (Integer int1) -> {
+            wallet.deposit(-1);
+            Assert.assertEquals("Incorrect wallet balance", 0, wallet.getBalance());
         });
 
 

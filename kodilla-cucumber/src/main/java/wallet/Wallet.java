@@ -8,6 +8,9 @@ public class Wallet {
     }
 
     public void deposit(int money) {
+        if (money<0){
+            System.out.println("Negative numbers not allowed");
+        } else
         this.balance += money;
     }
 
