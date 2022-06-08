@@ -42,5 +42,32 @@ public class WalletSteps implements En {
             Assert.assertEquals(200, wallet.getBalance());
         });
 
+        Then("I should see {string}", (String string) -> {
+            Assert.assertEquals(string, cashier.getMinAmountMessage());
+        });
+
+        When("I request $-{int}", (Integer int1) -> {
+            cashier.withdraw(wallet, -1);
+        });
+
+        Then("The message should be displayed {string}", (String string) -> {
+            // Write code here that turns the phrase above into concrete actions
+            Assert.assertEquals(string, cashier.getIncorrectAmountMessage());
+        });
+
+        When("I request {double}", (Double double1) -> {
+            cashier.withdraw(wallet, 0.5);
+        });
+
+        When("I request zero $0", () -> {
+            cashier.withdraw(wallet, 0);
+        });
+
+        Then("I should see message that  {string}", (String string) -> {
+            Assert.assertEquals(string, cashier.getMinAmountMessage());
+
+        });
+
+
     }
 }
