@@ -85,6 +85,8 @@ public class WalletSteps implements En {
             Assert.assertEquals("Incorrect wallet balance", 0, wallet.getBalance());
         });
 
-
+        When("I withdraw $0.{int}", (Integer int1) -> {
+           cashier.withdraw(wallet, 0.512345123);
+        });
     }
 }

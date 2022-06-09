@@ -13,6 +13,9 @@ public class Wallet {
         } else
         this.balance += money;
     }
+    public void deposit(double money) {
+        System.out.println("Negative numbers not allowed");
+        }
 
     public void debit (int money){
         this.balance -=money;
