@@ -13,15 +13,12 @@ public class Wallet {
         } else
         this.balance += money;
     }
-    public void deposit(double money) {
+    public String deposit(double money) {
         System.out.println("Negative numbers not allowed");
-        }
-
-    public void debit (int money){
-        this.balance -=money;
+        return "Negative numbers not allowed";
     }
 
-    public void debit (double money){
+    public void debit (int money){
         this.balance -=money;
     }
 
