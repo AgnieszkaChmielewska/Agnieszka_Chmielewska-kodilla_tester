@@ -32,8 +32,7 @@ class PersonTestSuite {
         ArrayList<String> BMIResults = new ArrayList<>(Arrays.asList("Very severely underweight", "Severely underweight", "Underweight", "Normal (healthy weight)", "Overweight", "Obese Class I (Moderately obese)",
                 "Obese Class II (Severely obese)" + "Obese Class III (Very severely obese)", "Obese Class IV (Morbidly Obese)", "Obese Class V (Super Obese)", "Obese Class VI (Hyper Obese)"));
         boolean expectedResult = BMIResults.contains(person.getBMI());
-        assertTrue(
-                expectedResult);
+        assertTrue(expectedResult);
     }
 
 }
