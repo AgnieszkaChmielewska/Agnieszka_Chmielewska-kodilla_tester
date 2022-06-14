@@ -15,17 +15,15 @@ public class GoogleSearch extends AbstractPage{
     @FindBy(css = "input[title='Szukaj']")
     static WebElement inputField;
 
-    @FindBy(css = "input[value='Szukaj w Google']")
+    @FindBy(xpath = "//div[@class=\"FPdoLc lJ9FBc\"]/center/input[@class =\"gNO89b\"]")
     static List<WebElement> searchButton;
-
-    private static GoogleResults googleResults;
+    private GoogleResults googleResults;
 
     public GoogleSearch(WebDriver driver){
         super(driver);
     }
 
-
-    public void searchResults() {
+    public GoogleResults searchResults() {
         PageFactory.initElements(driver, GoogleSearch.class);
         WebElement consentButton = driver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div"));
         WebDriverWait wait = new WebDriverWait(driver,10);
@@ -33,9 +31,8 @@ public class GoogleSearch extends AbstractPage{
 
         inputField.sendKeys("Kodilla");
         googleResults = loadResults(driver);
-        googleResults.iSeeResults();
+        return googleResults;
     }
-
     public GoogleResults loadResults(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(searchButton.get(0))).click();
