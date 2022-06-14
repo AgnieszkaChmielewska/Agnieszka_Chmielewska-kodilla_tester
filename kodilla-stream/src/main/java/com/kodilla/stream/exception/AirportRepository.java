@@ -14,11 +14,14 @@ public class AirportRepository {
         return airports;
 
     }
+
     public boolean isAirportInUse(String airport) throws AirportNotFoundException {
         if (getListOfAirports().containsKey(airport))
             return getListOfAirports().get(airport);
         throw new AirportNotFoundException();
+
     }
+
     public boolean isAirportInUss(String airport) {
         if (getListOfAirports().containsKey(airport))
             return getListOfAirports().get(airport);

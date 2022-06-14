@@ -57,5 +57,4 @@ public class TestGoogle {
         }
         Assert.assertSame(googleResultsElementUrl, pickedSiteUrl);
     }
-
 }
