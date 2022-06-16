@@ -24,7 +24,7 @@ public class BadCodeExample {
 
         BadCodeExample badCodeExample = (BadCodeExample) o;
 
-        return type != null ? type.equals(badCodeExample.type) : badCodeExample.type == null;
+        return Objects.equals(type, badCodeExample.type);
     }
 
     @Override
