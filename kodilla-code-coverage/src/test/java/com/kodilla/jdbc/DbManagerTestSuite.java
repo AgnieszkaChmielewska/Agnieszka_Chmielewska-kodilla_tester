@@ -113,7 +113,7 @@ class DbManagerTestSuite {
                     rs.getString("LASTNAME"));
             counter++;
         }
-        int expected = count +1;
+        int expected = count;
         Assertions.assertEquals(expected, counter);
 
         rs.close();
