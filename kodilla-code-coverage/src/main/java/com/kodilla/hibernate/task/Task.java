@@ -1,20 +1,25 @@
 package com.kodilla.hibernate.task;
 
 
+import com.kodilla.hibernate.tasklist.TaskList;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "TASKS")
+
+@Entity   /* adnotacja określa, które klasy, a w zasadzie obiekty utworzone na ich podstawie, mają podlegać utrwalaniu (ang. persistence), tj. zapisywaniu w bazie danych.*/
+@Table(name = "TASKS")  /*adnotacja określa do jakiej tablicy mają być zapisywane*/
 public class Task {
     private int id;
     private String description;
     private LocalDate created;
     private int duration;
+    private TaskFinancialDetails taskFinancialDetails;
+    private TaskList taskList;
 
+    //tworzymy konstruktor ogólny oprócz konstruktora klasy
     public Task() {
-
     }
 
     public Task(String description, int duration){
@@ -23,6 +28,27 @@ public class Task {
         this.duration = duration;
     }
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "TASKS_FINANCIALS_ID")
+    public TaskFinancialDetails getTaskFinancialDetails() {
+        return taskFinancialDetails;
+    }
+
+    public void setTaskFinancialDetails(TaskFinancialDetails taskFinancialDetails) {
+        this.taskFinancialDetails = taskFinancialDetails;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "TASKLIST_ID")
+    public TaskList getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(TaskList taskList) {
+        this.taskList = taskList;
+    }
+
+    //definiujemy kolumny
     @Id
     @GeneratedValue
     @NotNull
