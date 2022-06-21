@@ -1,10 +1,11 @@
 package com.kodilla.hibernate.tasklist;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+
+@Entity
+@Table(name = "TASKLISTS")
 public class TaskList {
     private int id;
     private String listName;
