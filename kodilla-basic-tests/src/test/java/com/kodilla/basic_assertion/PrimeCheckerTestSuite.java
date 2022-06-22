@@ -2,13 +2,26 @@ package com.kodilla.basic_assertion;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PrimeCheckerTestSuite {
     private final PrimeChecker checker = new PrimeChecker();
     private static int count = 0;
 //    Zmienna statyczna należy do klasy, a nie do obiektu. Dzięki temu raz ustawiona wartość jest "zapamiętywana" pomiędzy poszczególnymi wywołaniami
+
+    @Test
+    public void shouldReturnCount(){
+        int count = checker.getCount();
+        count++;
+        assertEquals(1, count);
+    }
+
+    @Test
+    public void shouldIncrementCount(){
+        checker.incrementCount();
+        int count = checker.getCount();
+        assertEquals(1, count);
+    }
 
     @Test
     public void shouldReturnFalseWhenPassingNotPrimeNumber() {

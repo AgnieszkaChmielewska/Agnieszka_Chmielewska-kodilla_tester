@@ -19,7 +19,7 @@ public class ShapeApplication {
             ShapeUtils.displayShapeInfo(shape);
     }
 
-    private static Shape drawShape() {
+    public static Shape drawShape() {
         Random random = new Random();
         int drawnShapeKind = random.nextInt(3); // possible values: 0, 1, 2
         double a = random.nextDouble() * 100 + 1;     // possible values: from  1 to 100.99999....  ??????

@@ -19,20 +19,24 @@ class TaskListRepositoryTestSuite {
     private TaskListRepository taskListRepository;
 
     String LISTNAME = "Test: Learn Hibernate";
+    String DESCRIPTION = "One";
 
     @Test
-    void testTaskRepositoryFindByDuration() {
+    void testTaskListRepositoryFindByDuration() {
         //Given
-        TaskList taskList = new TaskList(LISTNAME,"One");
+        TaskList taskList = new TaskList(LISTNAME,DESCRIPTION);
         taskListRepository.save(taskList);
         String listName = taskList.getListName();
 
         //When
         List<TaskList> readTasksList = taskListRepository.findByListName(listName);
         String foundListName = readTasksList.get(0).getListName();
+        String description = taskList.getDescription();
 
         //Then
         Assertions.assertEquals("Test: Learn Hibernate", foundListName);
+        Assertions.assertEquals(1, readTasksList.size());
+        Assertions.assertEquals(description, DESCRIPTION);
 
         //CleanUp
         taskListRepository.deleteAll();

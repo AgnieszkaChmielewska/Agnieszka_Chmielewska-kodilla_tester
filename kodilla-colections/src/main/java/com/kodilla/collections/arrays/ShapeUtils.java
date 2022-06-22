@@ -11,7 +11,6 @@ public class ShapeUtils {
         System.out.println("Shape kind: " + getShapeName(shape));
         System.out.println("Shape area: " + shape.getArea());
         System.out.println("Shape perimeter: " + shape.getPerimeter());
-
     }
 
     private static String getShapeName(Shape shape) {
